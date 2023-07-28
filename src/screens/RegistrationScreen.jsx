@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Pressable, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { AntDesign } from '@expo/vector-icons';
@@ -67,15 +67,15 @@ const RegistrationScreen = () => {
           maxLength={15}
           secureTextEntry={!inputStates.showPassword}
         />
-        <Pressable onPress={toggleShowPassword} style={styles.textAccent}>
+        <TouchableOpacity onPress={toggleShowPassword} style={styles.textAccent}>
           <Text style={styles.textAccent}>
             {inputStates.showPassword ? 'Приховати' : 'Показати'}
           </Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
-      <Pressable style={styles.button}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.textButton}>Зареєстуватися</Text>
-      </Pressable>
+      </TouchableOpacity>
       <Pressable>
         <Text style={styles.textEnterButton}>Вже є акаунт? Увійти</Text>
       </Pressable>
@@ -115,18 +115,13 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontWeight: '500',
     fontSize: 30,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     marginBottom: 32,
     fontFamily: 'Roboto-Medium',
   },
   input: {
     width: '100%',
-    maxWidth: 343,
     height: 50,
     marginBottom: 16,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     borderWidth: 1,
     padding: 16,
     backgroundColor: '#F6F6F6',
@@ -146,7 +141,7 @@ const styles = StyleSheet.create({
   },
   textAccent: {
     position: 'absolute',
-    right: 20,
+    right: 10,
     top: 7,
     color: '#1B4371',
   },
@@ -156,8 +151,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 25,
     height: 51,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     marginTop: 43,
     marginBottom: 16,
     justifyContent: 'center',
@@ -172,8 +165,6 @@ const styles = StyleSheet.create({
   },
   textEnterButton: {
     color: '#1B4371',
-    marginLeft: 'auto',
-    marginRight: 'auto',
     fontFamily: 'Roboto-Regular',
   },
 });

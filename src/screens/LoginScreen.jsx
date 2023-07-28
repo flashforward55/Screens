@@ -1,11 +1,11 @@
-import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Pressable, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
 const LoginScreen = () => {
   const [inputStates, setInputStates] = useState({
     input2: false,
     input3: false,
-    showPassword: false, // State to track whether the password should be shown in plain text or obscured
+    showPassword: false,
   });
   const [focusedInput, setFocusedInput] = useState(null);
 
@@ -55,9 +55,9 @@ const LoginScreen = () => {
           </Text>
         </Pressable>
       </View>
-      <Pressable style={styles.button}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.textButton}>Увійти</Text>
-      </Pressable>
+      </TouchableOpacity>
       <Pressable>
         <Text style={styles.textEnterButton}>Немає акаунту? Зареєструватися</Text>
       </Pressable>
@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    alignItems: 'center', // Center children horizontally
-    padding: 16, // Add padding for spacing from screen edges
+    alignItems: 'center',
+    padding: 16,
   },
   imageAndPlusContainer: {
-    alignItems: 'center', // Center children horizontally
-    marginTop: 30, // Adjust the margin as needed
-    maxWidth: '100%', // Set the maximum width to the screen's width
+    alignItems: 'center',
+    marginTop: 30,
+    maxWidth: '100%',
   },
   imageContainer: {
     backgroundColor: '#F6F6F6',
@@ -95,17 +95,12 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontWeight: '500',
     fontSize: 30,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     marginBottom: 32,
   },
   input: {
-    width: '100%', // Take the full available width within the parent container
-    maxWidth: 343, // Set a maximum width for the input
+    width: '100%',
     height: 50,
     marginBottom: 16,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     borderWidth: 1,
     padding: 16,
     backgroundColor: '#F6F6F6',
@@ -114,7 +109,7 @@ const styles = StyleSheet.create({
   },
   inputFocused: {
     borderColor: '#FF6C00',
-    backgroundColor: '#FFFFFF', // Add this line to change the background color when focused
+    backgroundColor: '#FFFFFF',
   },
   inputView: {
     width: '100%',
@@ -135,8 +130,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 25,
     height: 51,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     marginTop: 43,
     marginBottom: 16,
     justifyContent: 'center',
@@ -147,7 +140,5 @@ const styles = StyleSheet.create({
   },
   textEnterButton: {
     color: '#1B4371',
-    marginLeft: 'auto',
-    marginRight: 'auto',
   },
 });
