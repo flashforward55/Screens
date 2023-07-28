@@ -1,14 +1,9 @@
 import { StyleSheet, View, Text, TextInput, Pressable, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
-import { useFonts } from 'expo-font';
+import { useState } from 'react';
+
 import { AntDesign } from '@expo/vector-icons';
 
 const RegistrationScreen = () => {
-  const [fontsLoaded] = useFonts({
-    'Roboto-Medium': require('../../assets/fonts/Roboto-Medium.ttf'),
-    'Roboto-Regular': require('../../assets/fonts/Roboto-Regular.ttf'),
-  });
-
   const [inputStates, setInputStates] = useState({
     input1: false,
     input2: false,
@@ -116,7 +111,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 30,
     marginBottom: 32,
-    fontFamily: 'Roboto-Medium',
   },
   input: {
     width: '100%',
@@ -161,10 +155,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     lineHeight: 18.75,
-    fontFamily: 'Roboto-Regular',
   },
   textEnterButton: {
     color: '#1B4371',
-    fontFamily: 'Roboto-Regular',
   },
 });
