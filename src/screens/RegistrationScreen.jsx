@@ -1,13 +1,19 @@
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import React, { useState } from 'react';
+import { useFonts } from 'expo-font';
 import { AntDesign } from '@expo/vector-icons';
 
 const RegistrationScreen = () => {
+  const [fontsLoaded] = useFonts({
+    'Roboto-Medium': require('../../assets/fonts/Roboto-Medium.ttf'),
+    'Roboto-Regular': require('../../assets/fonts/Roboto-Regular.ttf'),
+  });
+
   const [inputStates, setInputStates] = useState({
     input1: false,
     input2: false,
     input3: false,
-    showPassword: false, // State to track whether the password should be shown in plain text or obscured
+    showPassword: false,
   });
   const [focusedInput, setFocusedInput] = useState(null);
 
@@ -25,7 +31,7 @@ const RegistrationScreen = () => {
   const toggleShowPassword = () => {
     setInputStates(prevState => ({
       ...prevState,
-      showPassword: !prevState.showPassword, // Toggle the state when "Показати" is pressed
+      showPassword: !prevState.showPassword,
     }));
   };
 
@@ -59,7 +65,7 @@ const RegistrationScreen = () => {
           onBlur={handleBlur}
           placeholder="Пароль"
           maxLength={15}
-          secureTextEntry={!inputStates.showPassword} // Toggle secureTextEntry based on the showPassword state
+          secureTextEntry={!inputStates.showPassword}
         />
         <Pressable onPress={toggleShowPassword} style={styles.textAccent}>
           <Text style={styles.textAccent}>
@@ -85,13 +91,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    alignItems: 'center', // Center children horizontally
-    padding: 16, // Add padding for spacing from screen edges
+    alignItems: 'center',
+    padding: 16,
+    marginTop: 150,
   },
   imageAndPlusContainer: {
-    alignItems: 'center', // Center children horizontally
-    marginTop: 30, // Adjust the margin as needed
-    maxWidth: '100%', // Set the maximum width to the screen's width
+    alignItems: 'center',
+    marginTop: 30,
+    maxWidth: '100%',
+    marginTop: -75,
   },
   imageContainer: {
     backgroundColor: '#F6F6F6',
@@ -110,10 +118,11 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 32,
+    fontFamily: 'Roboto-Medium',
   },
   input: {
-    width: '100%', // Take the full available width within the parent container
-    maxWidth: 343, // Set a maximum width for the input
+    width: '100%',
+    maxWidth: 343,
     height: 50,
     marginBottom: 16,
     marginLeft: 'auto',
@@ -126,7 +135,7 @@ const styles = StyleSheet.create({
   },
   inputFocused: {
     borderColor: '#FF6C00',
-    backgroundColor: '#FFFFFF', // Add this line to change the background color when focused
+    backgroundColor: '#FFFFFF',
   },
   inputView: {
     width: '100%',
@@ -159,10 +168,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     lineHeight: 18.75,
+    fontFamily: 'Roboto-Regular',
   },
   textEnterButton: {
     color: '#1B4371',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: 'Roboto-Regular',
   },
 });

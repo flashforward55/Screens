@@ -6,7 +6,7 @@ const PostsScreen = () => {
   return (
     <>
       <View style={styles.containerPostsScreen}>
-        <ImageBackground source={image} style={styles.image}>
+        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
           <RegistrationScreen />
         </ImageBackground>
       </View>
@@ -22,6 +22,5 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
-    resizeMode: 'cover',
   },
 });
