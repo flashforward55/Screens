@@ -82,13 +82,11 @@ export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   containerRegistrationScreen: {
-    flex: 1,
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     alignItems: 'center',
     padding: 16,
-    marginTop: 150,
   },
   imageAndPlusContainer: {
     alignItems: 'center',
