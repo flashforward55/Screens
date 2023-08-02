@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 25,
     height: 51,
-    marginTop: 43,
+    marginTop: 27,
     marginBottom: 16,
     justifyContent: 'center',
     width: '100%',
@@ -185,5 +185,6 @@ const styles = StyleSheet.create({
   },
   textEnterButton: {
     color: '#1B4371',
+    paddingBottom: 94,
   },
 });

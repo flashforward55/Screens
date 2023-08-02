@@ -80,10 +80,8 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.textButton} onPress={onLogin}>
-          Увійти
-        </Text>
+      <TouchableOpacity style={styles.button} onPress={onLogin}>
+        <Text style={styles.textButton}>Увійти</Text>
       </TouchableOpacity>
       <TouchableOpacity>
         <Text style={styles.textEnterButton}>
@@ -145,20 +143,24 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#FF6C00',
-    paddingHorizontal: 111.5,
+    paddingHorizontal: 32,
     paddingVertical: 16,
     borderRadius: 25,
     height: 51,
-    marginTop: 43,
+    marginTop: 27,
     marginBottom: 16,
     justifyContent: 'center',
+    width: '100%',
   },
   textButton: {
     fontSize: 16,
     color: '#fff',
+    textAlign: 'center',
+    lineHeight: 18.75,
   },
   textEnterButton: {
     color: '#1B4371',
+    paddingBottom: 160,
   },
   underlineText: {
     textDecorationLine: 'underline',
