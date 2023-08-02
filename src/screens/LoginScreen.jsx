@@ -1,13 +1,29 @@
-import { StyleSheet, View, Text, TextInput, Pressable, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import React, { useState } from 'react';
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [inputStates, setInputStates] = useState({
     input2: false,
     input3: false,
     showPassword: false,
   });
   const [focusedInput, setFocusedInput] = useState(null);
+  const onLogin = () => {
+    console.log({ email, password });
+    setEmail('');
+    setPassword('');
+  };
 
   const handleFocus = inputKey => {
     setFocusedInput(inputKey);
@@ -30,37 +46,50 @@ const LoginScreen = () => {
   return (
     <View style={styles.containerRegistrationScreen}>
       <Text style={styles.text}>Увійти</Text>
-      <TextInput
-        style={[styles.input, isInputFocused('input2') && styles.inputFocused]}
-        onFocus={() => handleFocus('input2')}
-        onBlur={handleBlur}
-        placeholder="Адреса електронної пошти"
-      />
-      <View style={styles.inputView}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        style={{ width: '100%' }}
+      >
         <TextInput
-          style={[
-            styles.input,
-            styles.inputPassword,
-            isInputFocused('input3') && styles.inputFocused,
-          ]}
-          onFocus={() => handleFocus('input3')}
+          style={[styles.input, isInputFocused('input2') && styles.inputFocused]}
+          value={email}
+          onChangeText={setEmail}
+          onFocus={() => handleFocus('input2')}
           onBlur={handleBlur}
-          placeholder="Пароль"
-          maxLength={15}
-          secureTextEntry={!inputStates.showPassword} // Toggle secureTextEntry based on the showPassword state
+          placeholder="Адреса електронної пошти"
         />
-        <Pressable onPress={toggleShowPassword} style={styles.textAccent}>
-          <Text style={styles.textAccent}>
-            {inputStates.showPassword ? 'Приховати' : 'Показати'}
-          </Text>
-        </Pressable>
-      </View>
+        <View style={styles.inputView}>
+          <TextInput
+            style={[
+              styles.input,
+              styles.inputPassword,
+              isInputFocused('input3') && styles.inputFocused,
+            ]}
+            value={password}
+            onChangeText={setPassword}
+            onFocus={() => handleFocus('input3')}
+            onBlur={handleBlur}
+            placeholder="Пароль"
+            maxLength={15}
+            secureTextEntry={!inputStates.showPassword}
+          />
+          <TouchableOpacity onPress={toggleShowPassword} style={styles.textAccent}>
+            <Text style={styles.textAccent}>
+              {inputStates.showPassword ? 'Приховати' : 'Показати'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.textButton}>Увійти</Text>
+        <Text style={styles.textButton} onPress={onLogin}>
+          Увійти
+        </Text>
       </TouchableOpacity>
-      <Pressable>
-        <Text style={styles.textEnterButton}>Немає акаунту? Зареєструватися</Text>
-      </Pressable>
+      <TouchableOpacity>
+        <Text style={styles.textEnterButton}>
+          Немає акаунту? <Text style={styles.underlineText}>Зареєструватися</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -69,27 +98,17 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   containerRegistrationScreen: {
-    flex: 1,
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     alignItems: 'center',
     padding: 16,
   },
-  imageAndPlusContainer: {
-    alignItems: 'center',
-    marginTop: 30,
-    maxWidth: '100%',
-  },
   imageContainer: {
     backgroundColor: '#F6F6F6',
     width: 120,
     height: 120,
     borderRadius: 16,
-  },
-  imageAdd: {
-    top: -40,
-    left: 60,
   },
   text: {
     color: '#212121',
@@ -140,5 +159,8 @@ const styles = StyleSheet.create({
   },
   textEnterButton: {
     color: '#1B4371',
+  },
+  underlineText: {
+    textDecorationLine: 'underline',
   },
 });

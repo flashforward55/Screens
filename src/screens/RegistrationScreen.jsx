@@ -1,9 +1,21 @@
-import { StyleSheet, View, Text, TextInput, Pressable, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import { useState } from 'react';
 
 import { AntDesign } from '@expo/vector-icons';
 
 const RegistrationScreen = () => {
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [inputStates, setInputStates] = useState({
     input1: false,
     input2: false,
@@ -11,6 +23,12 @@ const RegistrationScreen = () => {
     showPassword: false,
   });
   const [focusedInput, setFocusedInput] = useState(null);
+  const onLogin = () => {
+    console.log({ login, email, password });
+    setLogin('');
+    setEmail('');
+    setPassword('');
+  };
 
   const handleFocus = inputKey => {
     setFocusedInput(inputKey);
@@ -37,43 +55,54 @@ const RegistrationScreen = () => {
         <AntDesign name="pluscircleo" size={22} style={styles.imageAdd} color="#FF6C00" />
       </View>
       <Text style={styles.text}>Реєстрація</Text>
-      <TextInput
-        style={[styles.input, isInputFocused('input1') && styles.inputFocused]}
-        onFocus={() => handleFocus('input1')}
-        onBlur={handleBlur}
-        placeholder="Логін"
-      />
-      <TextInput
-        style={[styles.input, isInputFocused('input2') && styles.inputFocused]}
-        onFocus={() => handleFocus('input2')}
-        onBlur={handleBlur}
-        placeholder="Адреса електронної пошти"
-      />
-      <View style={styles.inputView}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        style={{ width: '100%' }}
+      >
         <TextInput
-          style={[
-            styles.input,
-            styles.inputPassword,
-            isInputFocused('input3') && styles.inputFocused,
-          ]}
-          onFocus={() => handleFocus('input3')}
+          style={[styles.input, isInputFocused('input1') && styles.inputFocused]}
+          value={login}
+          onChangeText={setLogin}
+          onFocus={() => handleFocus('input1')}
           onBlur={handleBlur}
-          placeholder="Пароль"
-          maxLength={15}
-          secureTextEntry={!inputStates.showPassword}
+          placeholder="Логін"
         />
-        <TouchableOpacity onPress={toggleShowPassword} style={styles.textAccent}>
-          <Text style={styles.textAccent}>
-            {inputStates.showPassword ? 'Приховати' : 'Показати'}
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={styles.button}>
+        <TextInput
+          style={[styles.input, isInputFocused('input2') && styles.inputFocused]}
+          value={email}
+          onChangeText={setEmail}
+          onFocus={() => handleFocus('input2')}
+          onBlur={handleBlur}
+          placeholder="Адреса електронної пошти"
+        />
+        <View style={styles.inputView}>
+          <TextInput
+            style={[
+              styles.input,
+              styles.inputPassword,
+              isInputFocused('input3') && styles.inputFocused,
+            ]}
+            value={password}
+            onChangeText={setPassword}
+            onFocus={() => handleFocus('input3')}
+            onBlur={handleBlur}
+            placeholder="Пароль"
+            maxLength={15}
+            secureTextEntry={!inputStates.showPassword}
+          />
+          <TouchableOpacity onPress={toggleShowPassword} style={styles.textAccent}>
+            <Text style={styles.textAccent}>
+              {inputStates.showPassword ? 'Приховати' : 'Показати'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+      <TouchableOpacity style={styles.button} onPress={onLogin}>
         <Text style={styles.textButton}>Зареєстуватися</Text>
       </TouchableOpacity>
-      <Pressable>
+      <TouchableOpacity>
         <Text style={styles.textEnterButton}>Вже є акаунт? Увійти</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };
