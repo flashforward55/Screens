@@ -1,36 +1,48 @@
-import {
-  ImageBackground,
-  StyleSheet,
-  View,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
-import image from '../images/bg.jpg';
-import RegistrationScreen from './RegistrationScreen';
-/* import LoginScreen from './LoginScreen'; */
+import React from 'react';
+import { Image, Text, View, Pressable } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
 
-const PostsScreen = () => {
+export const PostsScreen = () => {
   return (
-    <>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.containerPostsScreen}>
-          <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-            <RegistrationScreen />
-            {/* <LoginScreen /> */}
-          </ImageBackground>
+    <View style={{ paddingLeft: 16, paddingTop: 32 }}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}></View>
+        <View style={styles.imageAndPlusContainer}>
+          <View style={styles.imageContainer}></View>
+          <AntDesign name="pluscircleo" size={22} style={styles.imageAdd} color="#FF6C00" />
         </View>
-      </TouchableWithoutFeedback>
-    </>
+        <View style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+          <Text>Name</Text>
+          <Text>Email</Text>
+        </View>
+      </View>
+    </View>
   );
 };
 
-export default PostsScreen;
+//export default PostsScreen;
 const styles = StyleSheet.create({
-  containerPostsScreen: {
-    flex: 1,
+  container: {
+    marginBottom: 32,
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 8,
   },
-  image: {
-    flex: 1,
-    justifyContent: 'flex-end',
+  imageAndPlusContainer: {
+    alignItems: 'center',
+    marginTop: 30,
+    maxWidth: '100%',
+    marginTop: -75,
+  },
+  imageContainer: {
+    backgroundColor: '#F6F6F6',
+    width: 120,
+    height: 120,
+    borderRadius: 16,
+  },
+  imageAdd: {
+    top: -40,
+    left: 60,
   },
 });
