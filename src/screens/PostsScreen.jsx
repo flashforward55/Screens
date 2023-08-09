@@ -1,8 +1,8 @@
 import React from 'react';
-import { Image, Text, View, Pressable } from 'react-native';
+import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-export const PostsScreen = () => {
+const PostsScreen = () => {
   return (
     <View style={{ paddingLeft: 16, paddingTop: 32 }}>
       <View style={styles.container}>
@@ -15,6 +15,7 @@ export const PostsScreen = () => {
     </View>
   );
 };
+export default PostsScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   imageContainer: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#fff',
     width: 120,
     height: 120,
     borderRadius: 16,

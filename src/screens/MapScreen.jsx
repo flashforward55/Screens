@@ -1,1 +1,3 @@
-export const MapScreen = () => {};
+const MapScreen = () => {};
+
+export default MapScreen;

@@ -1,34 +1,37 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { View, Image, Text, TextInput, Pressable } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
-export const CreatePostsScreen = () => {
+const CreatePostsScreen = () => {
   return (
     <View style={{ paddingTop: 32, marginLeft: 'auto', marginRight: 'auto' }}>
       <View style={styles.container}>
-        <View style={styles.circle}>
+        <TouchableOpacity style={styles.circle}>
           <Entypo name="camera" size={24} color="black" style={styles.image} />
-        </View>
+        </TouchableOpacity>
       </View>
       <Text style={{ color: '#BDBDBD', marginBottom: 32 }}>Завантажте фото</Text>
       <TextInput placeholder="Назва..." style={styles.input} />
       <View>
         <TextInput placeholder="Місцевість..." style={[styles.input, styles.inputWithMap]} />
 
-        <EvilIcons name="location" size={24} color="black" style={styles.imageMap} />
+        <EvilIcons name="location" size={30} color="black" style={styles.imageMap} />
       </View>
-      <Pressable style={styles.button} disabled>
+      <TouchableOpacity style={styles.button} disabled>
         <Text style={{ color: '#BDBDBD', fontSize: 16 }}>Опубліковати</Text>
-      </Pressable>
-      <Pressable style={styles.buttonTrash}>
-        <Feather name="trash" size={24} color="black" />
-      </Pressable>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonTrash}>
+        <AntDesign name="delete" size={24} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };
+
+export default CreatePostsScreen;
+
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F6F6F6',
@@ -52,8 +55,8 @@ export const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    top: 20,
-    left: 20,
+    top: 17,
+    left: 18,
   },
   input: {
     borderBottomWidth: 1,
@@ -69,11 +72,11 @@ export const styles = StyleSheet.create({
   },
   imageMap: {
     position: 'absolute',
-    top: 13,
+    top: 15,
     left: 0,
   },
   button: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#fff',
     width: 343,
     paddingHorizontal: 120,
     paddingVertical: 16,
@@ -86,7 +89,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonTrash: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#fff',
     width: 70,
     paddingHorizontal: 23,
     paddingVertical: 8,

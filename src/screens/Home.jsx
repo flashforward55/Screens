@@ -1,15 +1,15 @@
-import { PostsScreen } from './PostsScreen';
-import { CreatePostsScreen } from './CreatePostsScreen';
-import { ProfileScreen } from './ProfileScreen';
+import PostsScreen from './PostsScreen';
+import CreatePostsScreen from './CreatePostsScreen';
+import ProfileScreen from './ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
-import { Pressable, Image } from 'react-native';
+import { Pressable } from 'react-native';
 import { useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tabs = createBottomTabNavigator();
 
-export const Home = ({ navigation }) => {
+const Home = ({ navigation }) => {
   useEffect(() => {
     navigation.navigate('PostsScreen');
   }, []);
@@ -81,8 +81,9 @@ export const Home = ({ navigation }) => {
             backgroundColor: '#FF6C00',
             width: 70,
             height: 40,
-            marginTop: 8,
+            marginTop: 6,
             borderRadius: 20,
+            marginBottom: 6,
           },
         }}
         component={CreatePostsScreen}
@@ -95,3 +96,5 @@ export const Home = ({ navigation }) => {
     </Tabs.Navigator>
   );
 };
+
+export default Home;

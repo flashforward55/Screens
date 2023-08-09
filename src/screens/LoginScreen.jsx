@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import image from '../images/bg.jpg';
 
-export const LoginScreen = () => {
+const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [inputStates, setInputStates] = useState({
@@ -108,7 +108,7 @@ export const LoginScreen = () => {
   );
 };
 
-//export default LoginScreen;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   containerPostsScreen: {

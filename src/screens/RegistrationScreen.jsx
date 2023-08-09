@@ -15,7 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import image from '../images/bg.jpg';
 
-export const RegistrationScreen = () => {
+const RegistrationScreen = () => {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -118,7 +118,7 @@ export const RegistrationScreen = () => {
   );
 };
 
-//export default RegistrationScreen;
+export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   containerPostsScreen: {

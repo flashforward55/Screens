@@ -1,12 +1,12 @@
 import React from 'react';
-import { ImageBackground, View, Image, Pressable, Text } from 'react-native';
+import { ImageBackground, View, Pressable, Text, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import image from '../images/bg.jpg';
 import { StyleSheet } from 'react-native';
 import { useEffect } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
-export const ProfileScreen = () => {
+const ProfileScreen = () => {
   const isFocused = useIsFocused();
   const navigation = useNavigation();
 
@@ -19,16 +19,16 @@ export const ProfileScreen = () => {
   return (
     <ImageBackground source={image} resizeMode="cover" style={styles.image}>
       <View style={[styles.container, { height: 549, paddingTop: 92 }]}>
-        <View style={styles.imageAndPlusContainer}>
+        <TouchableOpacity style={styles.imageAndPlusContainer}>
           <View style={styles.imageContainer}></View>
           <AntDesign name="pluscircleo" size={22} style={styles.imageAdd} color="#FF6C00" />
-        </View>
-        <Pressable onPress={() => alert('You have just loged out!')}>
+        </TouchableOpacity>
+        <Pressable onPress={() => alert('You just loged out!')}>
           <AntDesign
             name="logout"
             size={24}
             color="black"
-            style={{ position: 'absolute', right: 16, top: -70 }}
+            style={{ position: 'absolute', right: 16, top: -140 }}
           />
         </Pressable>
         <Text style={styles.text}>Name</Text>
@@ -36,6 +36,9 @@ export const ProfileScreen = () => {
     </ImageBackground>
   );
 };
+
+export default ProfileScreen;
+
 export const styles = StyleSheet.create({
   container: {
     position: 'relative',
