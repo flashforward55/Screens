@@ -11,7 +11,13 @@ const CreatePostsScreen = () => {
   const isButtonActive = title !== '' && location !== '';
   return (
     <View
-      style={{ backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#F6F6F6', flex: 1 }}
+      style={{
+        backgroundColor: '#fff',
+        borderTopWidth: 1,
+        borderTopColor: '#F6F6F6',
+        flex: 1,
+        justifyContent: 'flex-end',
+      }}
     >
       <View style={{ paddingTop: 32, marginLeft: 'auto', marginRight: 'auto' }}>
         <View style={styles.container}>
@@ -19,7 +25,7 @@ const CreatePostsScreen = () => {
             <Entypo name="camera" size={24} color="black" style={styles.image} />
           </TouchableOpacity>
         </View>
-        <Text style={{ color: '#BDBDBD', marginBottom: 32 }}>Завантажте фото</Text>
+        <Text style={{ color: '#BDBDBD', marginBottom: 52 }}>Завантажте фото</Text>
         <TextInput
           placeholder="Назва..."
           style={styles.input}
@@ -61,7 +67,6 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#E8E8E8',
-    marginBottom: 8,
   },
   circle: {
     marginBottom: 'auto',
@@ -117,7 +122,8 @@ export const styles = StyleSheet.create({
     height: 40,
     marginLeft: 'auto',
     marginRight: 'auto',
-    justifyContent: 'center',
+    marginBottom: 6,
+    justifyContent: 'flex-end',
   },
   activeButton: {
     backgroundColor: '#FF6C00',
