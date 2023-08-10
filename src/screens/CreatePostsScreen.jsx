@@ -10,40 +10,44 @@ const CreatePostsScreen = () => {
   const [location, setLocation] = useState('');
   const isButtonActive = title !== '' && location !== '';
   return (
-    <View style={{ paddingTop: 32, marginLeft: 'auto', marginRight: 'auto' }}>
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.circle}>
-          <Entypo name="camera" size={24} color="black" style={styles.image} />
+    <View
+      style={{ backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#F6F6F6', flex: 1 }}
+    >
+      <View style={{ paddingTop: 32, marginLeft: 'auto', marginRight: 'auto' }}>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.circle}>
+            <Entypo name="camera" size={24} color="black" style={styles.image} />
+          </TouchableOpacity>
+        </View>
+        <Text style={{ color: '#BDBDBD', marginBottom: 32 }}>Завантажте фото</Text>
+        <TextInput
+          placeholder="Назва..."
+          style={styles.input}
+          value={title}
+          onChangeText={setTitle}
+        />
+        <View>
+          <TextInput
+            placeholder="Місцевість..."
+            style={[styles.input, styles.inputWithMap]}
+            value={location}
+            onChangeText={setLocation}
+          />
+
+          <EvilIcons name="location" size={30} color="black" style={styles.imageMap} />
+        </View>
+        <TouchableOpacity
+          style={[styles.button, isButtonActive ? styles.activeButton : null]}
+          disabled={!isButtonActive}
+        >
+          <Text style={[styles.buttonText, isButtonActive ? styles.activeButtonText : null]}>
+            Опубліковати
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonTrash}>
+          <AntDesign name="delete" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <Text style={{ color: '#BDBDBD', marginBottom: 32 }}>Завантажте фото</Text>
-      <TextInput
-        placeholder="Назва..."
-        style={styles.input}
-        value={title}
-        onChangeText={setTitle}
-      />
-      <View>
-        <TextInput
-          placeholder="Місцевість..."
-          style={[styles.input, styles.inputWithMap]}
-          value={location}
-          onChangeText={setLocation}
-        />
-
-        <EvilIcons name="location" size={30} color="black" style={styles.imageMap} />
-      </View>
-      <TouchableOpacity
-        style={[styles.button, isButtonActive ? styles.activeButton : null]}
-        disabled={!isButtonActive}
-      >
-        <Text style={[styles.buttonText, isButtonActive ? styles.activeButtonText : null]}>
-          Опубліковати
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonTrash}>
-        <AntDesign name="delete" size={24} color="black" />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -53,7 +57,6 @@ export default CreatePostsScreen;
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F6F6F6',
-    width: 343,
     height: 240,
     borderRadius: 8,
     borderWidth: 1,
@@ -94,8 +97,7 @@ export const styles = StyleSheet.create({
     left: 0,
   },
   button: {
-    backgroundColor: '#fff',
-    width: 343,
+    backgroundColor: '#F6F6F6',
     paddingHorizontal: 120,
     paddingVertical: 16,
     borderRadius: 100,
@@ -107,7 +109,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonTrash: {
-    backgroundColor: '#fff',
+    backgroundColor: '#F6F6F6',
     width: 70,
     paddingHorizontal: 23,
     paddingVertical: 8,

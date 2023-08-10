@@ -4,7 +4,16 @@ import { StyleSheet } from 'react-native';
 
 const PostsScreen = () => {
   return (
-    <View style={{ paddingLeft: 16, paddingTop: 32 }}>
+    <View
+      style={{
+        paddingLeft: 16,
+        paddingTop: 32,
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        borderTopWidth: 1,
+        borderTopColor: '#F6F6F6',
+      }}
+    >
       <View style={styles.container}>
         <View style={styles.imageContainer}></View>
         <View style={{ marginTop: 'auto', marginBottom: 'auto' }}>
@@ -25,7 +34,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   imageContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#F6F6F6',
     width: 120,
     height: 120,
     borderRadius: 16,
