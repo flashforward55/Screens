@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
@@ -6,6 +6,9 @@ import { EvilIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 const CreatePostsScreen = () => {
+  const [title, setTitle] = useState('');
+  const [location, setLocation] = useState('');
+  const isButtonActive = title !== '' && location !== '';
   return (
     <View style={{ paddingTop: 32, marginLeft: 'auto', marginRight: 'auto' }}>
       <View style={styles.container}>
@@ -14,14 +17,29 @@ const CreatePostsScreen = () => {
         </TouchableOpacity>
       </View>
       <Text style={{ color: '#BDBDBD', marginBottom: 32 }}>Завантажте фото</Text>
-      <TextInput placeholder="Назва..." style={styles.input} />
+      <TextInput
+        placeholder="Назва..."
+        style={styles.input}
+        value={title}
+        onChangeText={setTitle}
+      />
       <View>
-        <TextInput placeholder="Місцевість..." style={[styles.input, styles.inputWithMap]} />
+        <TextInput
+          placeholder="Місцевість..."
+          style={[styles.input, styles.inputWithMap]}
+          value={location}
+          onChangeText={setLocation}
+        />
 
         <EvilIcons name="location" size={30} color="black" style={styles.imageMap} />
       </View>
-      <TouchableOpacity style={styles.button} disabled>
-        <Text style={{ color: '#BDBDBD', fontSize: 16 }}>Опубліковати</Text>
+      <TouchableOpacity
+        style={[styles.button, isButtonActive ? styles.activeButton : null]}
+        disabled={!isButtonActive}
+      >
+        <Text style={[styles.buttonText, isButtonActive ? styles.activeButtonText : null]}>
+          Опубліковати
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonTrash}>
         <AntDesign name="delete" size={24} color="black" />
@@ -98,5 +116,15 @@ export const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     justifyContent: 'center',
+  },
+  activeButton: {
+    backgroundColor: '#FF6C00',
+  },
+  buttonText: {
+    color: '#BDBDBD',
+    fontSize: 16,
+  },
+  activeButtonText: {
+    color: '#fff',
   },
 });
