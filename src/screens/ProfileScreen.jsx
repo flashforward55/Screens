@@ -11,7 +11,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import { Feather, AntDesign } from '@expo/vector-icons';
+import { Feather, AntDesign, Entypo, EvilIcons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -70,6 +70,19 @@ const ProfileScreen = () => {
                 }}
               >
                 <Image style={styles.imageAvatar} source={UserAvatarBig} />
+                <TouchableOpacity style={styles.imageAndPlusContainer}>
+                  <View style={{ backgroundColor: '#fff', borderRadius: 100, top: 30, left: 60 }}>
+                    <AntDesign name="closecircleo" size={24} color="#BDBDBD" />
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => alert('You just loged out!')}>
+                  <Feather
+                    name="log-out"
+                    size={24}
+                    color="#BDBDBD"
+                    style={{ position: 'absolute', right: -100, top: 5 }}
+                  />
+                </TouchableOpacity>
               </View>
               <View
                 style={{
@@ -224,5 +237,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: '#212121',
+  },
+  imageAndPlusContainer: {
+    alignItems: 'center',
+    marginTop: 30,
+    maxWidth: '100%',
+    marginTop: -75,
+  },
+  /*   imageContainerPlus: {
+    backgroundColor: '#F6F6F6',
+    width: 120,
+    height: 120,
+    borderRadius: 16,
+  }, */
+  imageAdd: {
+    top: 30,
+    left: 60,
   },
 });

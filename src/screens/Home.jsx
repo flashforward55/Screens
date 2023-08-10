@@ -2,7 +2,7 @@ import PostsScreen from './PostsScreen';
 import CreatePostsScreen from './CreatePostsScreen';
 import ProfileScreen from './ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
 import { useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -40,6 +40,7 @@ const Home = ({ navigation }) => {
         name="PostsScreen"
         options={{
           title: 'Публікації',
+          headerTitleAlign: 'center',
           headerStyle: { height: 100 },
           headerTitleStyle: {
             marginTop: 50,
@@ -48,10 +49,10 @@ const Home = ({ navigation }) => {
           tabBarActiveTintColor: 'gray',
           headerRight: () => (
             <Pressable onPress={() => alert('You have just loged out!')}>
-              <AntDesign
-                name="logout"
+              <Feather
+                name="log-out"
                 size={24}
-                color="black"
+                color="#BDBDBD"
                 style={{ marginRight: 16, marginTop: 50 }}
               />
             </Pressable>
@@ -63,6 +64,7 @@ const Home = ({ navigation }) => {
         name="CreatePostsScreen"
         options={{
           title: 'Створити публікацію',
+          headerTitleAlign: 'center',
           headerStyle: { height: 100 },
           headerTitleStyle: { marginTop: 50 },
           tabBarStyle: { display: 'none' },
