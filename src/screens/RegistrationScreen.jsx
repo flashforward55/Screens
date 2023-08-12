@@ -32,7 +32,7 @@ const RegistrationScreen = () => {
     setLogin('');
     setEmail('');
     setPassword('');
-    navigation.navigate('Home');
+    navigation.navigate('MainNavigator');
   };
 
   const handleFocus = inputKey => {

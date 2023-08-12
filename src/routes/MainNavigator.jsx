@@ -1,41 +1,22 @@
-import PostsScreen from './PostsScreen';
-import CreatePostsScreen from './CreatePostsScreen';
-import ProfileScreen from './ProfileScreen';
+import PostsScreen from '../screens/PostsScreen';
+import CreatePostsScreen from '../screens/CreatePostsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
 import { useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { TabNavigator } from './TabNavigator';
 
 const Tabs = createBottomTabNavigator();
 
-const Home = ({ navigation }) => {
+const MainNavigator = ({ navigation }) => {
   useEffect(() => {
     navigation.navigate('PostsScreen');
   }, []);
 
   return (
-    <Tabs.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'PostsScreen') {
-            iconName = 'grid-outline';
-          } else if (route.name === 'CreatePostsScreen') {
-            iconName = 'add-outline';
-            color = '#fff';
-          } else if (route.name === 'ProfileScreen') {
-            iconName = 'person-outline';
-          }
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: 'gray',
-        inactiveTintColor: 'gray',
-      }}
-    >
+    <Tabs.Navigator screenOptions={TabNavigator.screenOptions}>
       <Tabs.Screen
         name="PostsScreen"
         options={{
@@ -99,4 +80,4 @@ const Home = ({ navigation }) => {
   );
 };
 
-export default Home;
+export default MainNavigator;
