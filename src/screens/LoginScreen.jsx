@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import image from '../images/bg.jpg';
+import image from '../images/bg-image.png';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -45,7 +45,7 @@ const LoginScreen = () => {
   const toggleShowPassword = () => {
     setInputStates(prevState => ({
       ...prevState,
-      showPassword: !prevState.showPassword, // Toggle the state when "Показати" is pressed
+      showPassword: !prevState.showPassword,
     }));
   };
 
@@ -57,7 +57,7 @@ const LoginScreen = () => {
             <Text style={styles.text}>Увійти</Text>
             <KeyboardAvoidingView
               behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-              style={{ width: '100%' }}
+              style={styles.keyboardAvoidingView}
             >
               <TextInput
                 style={[styles.input, isInputFocused('input2') && styles.inputFocused]}
@@ -138,6 +138,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 30,
     marginBottom: 32,
+  },
+  keyboardAvoidingView: {
+    width: '100%',
   },
   input: {
     width: '100%',

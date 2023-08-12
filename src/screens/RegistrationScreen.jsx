@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import image from '../images/bg.jpg';
+import image from '../images/bg-image.png';
 
 const RegistrationScreen = () => {
   const [login, setLogin] = useState('');
@@ -65,7 +65,7 @@ const RegistrationScreen = () => {
             <Text style={styles.text}>Реєстрація</Text>
             <KeyboardAvoidingView
               behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-              style={{ width: '100%' }}
+              style={styles.keyboardAvoidingView}
             >
               <TextInput
                 style={[styles.input, isInputFocused('input1') && styles.inputFocused]}
@@ -185,6 +185,9 @@ const styles = StyleSheet.create({
     right: 10,
     top: 7,
     color: '#1B4371',
+  },
+  keyboardAvoidingView: {
+    width: '100%',
   },
   button: {
     backgroundColor: '#FF6C00',

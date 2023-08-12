@@ -48,6 +48,7 @@ const PostsScreen = () => {
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <FlatList
+        showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <View style={styles.userContainer}>
             <Image style={styles.avatarImg} source={UserAvatar} />
@@ -77,7 +78,7 @@ const PostsScreen = () => {
                   <Feather name="message-circle" size={24} color="#FF6C00" />
                   <Text style={styles.textStatistic}>{item.comments}</Text>
                 </TouchableOpacity>
-                <View style={{ ...styles.wrap, marginLeft: 24 }}>
+                <View style={{ ...styles.wrap, ...styles.like2 }}>
                   <AntDesign name="like2" size={24} color="#FF6C00" />
                   <Text style={styles.textStatistic}>{item.likes}</Text>
                 </View>
@@ -168,5 +169,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: '#212121',
+  },
+  like2: {
+    marginLeft: 24,
   },
 });

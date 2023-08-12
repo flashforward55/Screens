@@ -50,7 +50,7 @@ const ProfileScreen = () => {
   const onLayoutRootView = useCallback(async () => {
     await SplashScreen.hideAsync();
   }, []);
-
+  const componentWidth = windowWidth - 16 * 2;
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <ImageBackground style={styles.bgImage} source={Bg}>
@@ -71,17 +71,12 @@ const ProfileScreen = () => {
               >
                 <Image style={styles.imageAvatar} source={UserAvatarBig} />
                 <TouchableOpacity style={styles.imageAndPlusContainer}>
-                  <View style={{ backgroundColor: '#fff', borderRadius: 100, top: 30, left: 60 }}>
+                  <View style={styles.closecircleo}>
                     <AntDesign name="closecircleo" size={24} color="#BDBDBD" />
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => alert('You just loged out!')}>
-                  <Feather
-                    name="log-out"
-                    size={24}
-                    color="#BDBDBD"
-                    style={{ position: 'absolute', right: -100, top: 5 }}
-                  />
+                  <Feather name="log-out" size={24} color="#BDBDBD" style={styles.logout} />
                 </TouchableOpacity>
               </View>
               <View
@@ -145,7 +140,6 @@ const ProfileScreen = () => {
           contentContainerStyle={{
             flexGrow: 1,
             alignItems: 'center',
-
             borderTopLeftRadius: 25,
             borderTopRightRadius: 25,
           }}
@@ -244,12 +238,17 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     marginTop: -75,
   },
-  /*   imageContainerPlus: {
-    backgroundColor: '#F6F6F6',
-    width: 120,
-    height: 120,
-    borderRadius: 16,
-  }, */
+  closecircleo: {
+    backgroundColor: '#fff',
+    borderRadius: 100,
+    top: 30,
+    left: 60,
+  },
+  logout: {
+    position: 'absolute',
+    right: -100,
+    top: 5,
+  },
   imageAdd: {
     top: 30,
     left: 60,

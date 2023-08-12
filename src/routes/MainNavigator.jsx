@@ -1,12 +1,13 @@
 import PostsScreen from '../screens/PostsScreen';
 import CreatePostsScreen from '../screens/CreatePostsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
 import { useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { TabNavigator } from './TabNavigator';
+import BottomNavigator from './BottomNavigator';
 
 const Tabs = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ const MainNavigator = ({ navigation }) => {
   }, []);
 
   return (
-    <Tabs.Navigator screenOptions={TabNavigator.screenOptions}>
+    <Tabs.Navigator screenOptions={BottomNavigator.screenOptions}>
       <Tabs.Screen
         name="PostsScreen"
         options={{
@@ -30,12 +31,7 @@ const MainNavigator = ({ navigation }) => {
           tabBarActiveTintColor: 'gray',
           headerRight: () => (
             <Pressable onPress={() => alert('You have just loged out!')}>
-              <Feather
-                name="log-out"
-                size={24}
-                color="#BDBDBD"
-                style={{ marginRight: 16, marginTop: 50 }}
-              />
+              <Feather name="log-out" size={24} color="#BDBDBD" style={styles.feather} />
             </Pressable>
           ),
         }}
@@ -51,12 +47,7 @@ const MainNavigator = ({ navigation }) => {
           tabBarStyle: { display: 'none' },
           headerLeft: () => (
             <Pressable onPress={() => navigation.navigate('PostsScreen')}>
-              <Ionicons
-                name="arrow-back"
-                size={24}
-                color="gray"
-                style={{ marginLeft: 20, marginTop: 50 }}
-              />
+              <Ionicons name="arrow-back" size={24} color="gray" style={styles.arrowback} />
             </Pressable>
           ),
           tabBarLabelStyle: { display: 'none' },
@@ -79,5 +70,10 @@ const MainNavigator = ({ navigation }) => {
     </Tabs.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  feather: { marginRight: 16, marginTop: 50 },
+  arrowback: { marginLeft: 20, marginTop: 50 },
+});
 
 export default MainNavigator;
