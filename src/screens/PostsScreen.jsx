@@ -45,6 +45,10 @@ const PostsScreen = () => {
     await SplashScreen.hideAsync();
   }, []);
 
+  const cardImageStyle = {
+    width: windowWidth - 16 * 2,
+  };
+
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <FlatList
@@ -61,13 +65,7 @@ const PostsScreen = () => {
         data={posts}
         renderItem={({ item }) => (
           <View style={styles.itemList}>
-            <Image
-              source={item.img}
-              style={{
-                ...styles.cardImage,
-                width: windowWidth - 16 * 2,
-              }}
-            />
+            <Image source={item.img} style={[styles.cardImage, cardImageStyle]} />
             <Text style={styles.userPostTitle}>{item.title}</Text>
             <View style={styles.userCard}>
               <View style={styles.userCardInformation}>

@@ -50,25 +50,33 @@ const ProfileScreen = () => {
   const onLayoutRootView = useCallback(async () => {
     await SplashScreen.hideAsync();
   }, []);
-  const componentWidth = windowWidth - 16 * 2;
+
+  const headerContainerStyle = {
+    marginTop: windowWidth > 500 ? 100 : 120,
+    width: windowWidth,
+  };
+
+  const imageContainerStyle = {
+    left: (windowWidth - 120) / 2,
+  };
+  const postContainerStyle = {
+    width: windowWidth,
+  };
+
+  const postImgStyle = {
+    width: windowWidth - 16 * 2,
+  };
+
+  const postTitleStyle = {
+    width: windowWidth - 30,
+  };
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
       <ImageBackground style={styles.bgImage} source={Bg}>
         <FlatList
           ListHeaderComponent={
-            <View
-              style={{
-                ...styles.contentContainer,
-                marginTop: windowWidth > 500 ? 100 : 120,
-                width: windowWidth,
-              }}
-            >
-              <View
-                style={{
-                  ...styles.imageContainer,
-                  left: (windowWidth - 120) / 2,
-                }}
-              >
+            <View style={[styles.contentContainer, headerContainerStyle]}>
+              <View style={[styles.imageContainer, imageContainerStyle]}>
                 <Image style={styles.imageAvatar} source={UserAvatarBig} />
                 <TouchableOpacity style={styles.imageAndPlusContainer}>
                   <View style={styles.closecircleo}>
@@ -79,40 +87,17 @@ const ProfileScreen = () => {
                   <Feather name="log-out" size={24} color="#BDBDBD" style={styles.logout} />
                 </TouchableOpacity>
               </View>
-              <View
-                style={{
-                  ...styles.userTitleContainer,
-                  width: windowWidth - 16 * 2,
-                }}
-              >
+              <View style={[styles.userTitleContainer, postImgStyle]}>
                 <Text style={styles.userTitle}>Natali Romanova</Text>
               </View>
             </View>
           }
           data={posts}
           renderItem={({ item }) => (
-            <View
-              style={{
-                ...styles.postContainer,
-                width: windowWidth,
-              }}
-            >
-              <Image
-                source={item.img}
-                style={{
-                  ...styles.postImg,
-                  width: windowWidth - 16 * 2,
-                }}
-              />
-              <Text
-                style={{
-                  ...styles.postTitle,
-                  width: windowWidth - 30,
-                }}
-              >
-                {item.title}
-              </Text>
-              <View style={{ ...styles.statisticUser, width: windowWidth - 30 }}>
+            <View style={[styles.postContainer, postContainerStyle]}>
+              <Image source={item.img} style={[styles.postImg, postImgStyle]} />
+              <Text style={[styles.postTitle, postTitleStyle]}>{item.title}</Text>
+              <View style={[styles.statisticUser, postTitleStyle]}>
                 <View style={styles.row}>
                   <TouchableOpacity
                     style={styles.statisticWrap}
@@ -122,7 +107,7 @@ const ProfileScreen = () => {
 
                     <Text style={styles.statisticText}>{item.comments}</Text>
                   </TouchableOpacity>
-                  <View style={{ ...styles.statisticWrap, marginLeft: 24 }}>
+                  <View style={[styles.statisticWrap, styles.statisticWrapStyles]}>
                     <AntDesign name="like2" size={24} color="#FF6C00" />
 
                     <Text style={styles.statisticText}>{item.likes}</Text>
@@ -137,12 +122,7 @@ const ProfileScreen = () => {
             </View>
           )}
           keyExtractor={item => item.id}
-          contentContainerStyle={{
-            flexGrow: 1,
-            alignItems: 'center',
-            borderTopLeftRadius: 25,
-            borderTopRightRadius: 25,
-          }}
+          contentContainerStyle={styles.contentContainerStyle}
           showsVerticalScrollIndicator={false}
         />
       </ImageBackground>
@@ -169,7 +149,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
     alignItems: 'center',
   },
-
+  contentContainerStyle: {
+    flexGrow: 1,
+    alignItems: 'center',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
   imageContainer: {
     position: 'absolute',
     top: -60,
@@ -226,6 +211,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  statisticWrapStyles: {
+    marginLeft: 24,
+  },
   statisticText: {
     marginLeft: 4,
     fontSize: 16,
@@ -246,7 +234,7 @@ const styles = StyleSheet.create({
   },
   logout: {
     position: 'absolute',
-    right: -100,
+    right: -105,
     top: 5,
   },
   imageAdd: {

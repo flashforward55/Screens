@@ -55,9 +55,9 @@ const MainNavigator = ({ navigation }) => {
             backgroundColor: '#FF6C00',
             width: 70,
             height: 40,
-            marginTop: 6,
+            marginTop: 5,
             borderRadius: 20,
-            marginBottom: 6,
+            marginBottom: 5,
           },
         }}
         component={CreatePostsScreen}
