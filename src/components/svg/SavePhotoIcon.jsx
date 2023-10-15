@@ -16,4 +16,3 @@ const SavePhoto = (props) => {
 
 export default SavePhoto;
 
-// https://boxicons.com/

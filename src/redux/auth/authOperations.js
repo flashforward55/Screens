@@ -3,7 +3,6 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
-  // onAuthStateChanged,
 } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -78,7 +77,6 @@ export const authLogout = () => async (dispatch) => {
     dispatch(logoutUser());
     await AsyncStorage.removeItem("auth_email");
     await AsyncStorage.removeItem("auth_password");
-    // dispatch(postsSlice.actions.reset());
   } catch (error) {
     return error.message;
   }
@@ -103,23 +101,6 @@ export const authChangeUser = () => async (dispatch) => {
     return error.message;
   }
 };
-
-// export const authChangeUserNew = () => async (dispatch) => {
-//   await onAuthStateChanged(auth, (user) => {
-//     console.log(user);
-//     if (user) {
-//       dispatch(
-//         updateUser({
-//           userId: user.uid,
-//           userName: user.displayName,
-//           userEmail: user.email,
-//           avatar: user.photoURL,
-//           isCurrentUser: true,
-//         })
-//       );
-//     }
-//   });
-// };
 
 export const changeAvatar = (avatar) => async (dispatch) => {
   try {
