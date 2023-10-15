@@ -1,26 +1,16 @@
-import { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { screenStyles } from "./screenStyles";
-import { CameraIcon, MapPinIcon, TrashIcon } from "../../components/svg";
-import KeyboardWrapper from "../../components/KeyboardWrapper/KeyboardWrapper";
-import { MainButton } from "../../components/Buttons";
-import Header from "../../components/Header/Header";
-import { selectPictureData } from "../../redux/posts/postsSelectors";
-import {
-  uploadPostToServer,
-  getPosts,
-} from "../../redux/posts/postsOperations";
-import { successAddPostToast } from "../../utils/toasts";
+import { screenStyles } from './screenStyles';
+import { CameraIcon, MapPinIcon, TrashIcon } from '../../components/svg';
+import KeyboardWrapper from '../../components/KeyboardWrapper/KeyboardWrapper';
+import { MainButton } from '../../components/Buttons';
+import Header from '../../components/Header/Header';
+import { selectPictureData } from '../../redux/posts/postsSelectors';
+import { uploadPostToServer, getPosts } from '../../redux/posts/postsOperations';
+import { successAddPostToast } from '../../utils/toasts';
 
 const { cameraBox, cameraIcon, textStyle, inputStyle } = screenStyles;
 
@@ -56,7 +46,7 @@ const CreatePostsScreen = () => {
   }, [title, descriptionLocation, picture]);
 
   const handleChangeInput = (name, value) => {
-    setValue((prev) => ({ ...prev, [name]: value }));
+    setValue(prev => ({ ...prev, [name]: value }));
   };
 
   const onSubmitForm = () => {
@@ -65,7 +55,7 @@ const CreatePostsScreen = () => {
     setIsKeyboard(false);
     setValue(initialValue);
     successAddPostToast();
-    navigation.navigate("Posts");
+    navigation.navigate('Posts');
   };
 
   return (
@@ -80,14 +70,14 @@ const CreatePostsScreen = () => {
                   style={cameraBox}
                   activeOpacity={0.7}
                   onPress={() => {
-                    navigation.navigate("camera", { fromScreen: "createPost" });
+                    navigation.navigate('camera', { fromScreen: 'createPost' });
                   }}
                 >
                   <View style={cameraIcon}>
                     <CameraIcon />
                   </View>
                 </TouchableOpacity>
-                <Text style={textStyle}> Редагувати фото</Text>
+                <Text style={textStyle}> Завантажте фото</Text>
               </>
             )}
             {picture && (
@@ -96,11 +86,11 @@ const CreatePostsScreen = () => {
                   style={cameraBox}
                   activeOpacity={0.7}
                   onPress={() => {
-                    navigation.navigate("camera", { fromScreen: "createPost" });
+                    navigation.navigate('camera', { fromScreen: 'createPost' });
                   }}
                 >
                   <Image
-                    style={{ height: 240, width: "100%", borderRadius: 8 }}
+                    style={{ height: 240, width: '100%', borderRadius: 8 }}
                     source={{ uri: picture }}
                   />
                   <View style={cameraIcon}>
@@ -121,9 +111,9 @@ const CreatePostsScreen = () => {
               value={value.title}
               onFocus={() => setIsKeyboard(true)}
               onEndEditing={() => setIsKeyboard(false)}
-              onChangeText={(value) => handleChangeInput("title", value)}
+              onChangeText={value => handleChangeInput('title', value)}
             />
-            <View style={{ justifyContent: "center" }}>
+            <View style={{ justifyContent: 'center' }}>
               <TextInput
                 style={{ ...textStyle, ...inputStyle, paddingLeft: 28 }}
                 keyboardType="default"
@@ -132,27 +122,21 @@ const CreatePostsScreen = () => {
                 value={value.descriptionLocation}
                 onFocus={() => setIsKeyboard(true)}
                 onEndEditing={() => setIsKeyboard(false)}
-                onChangeText={(value) =>
-                  handleChangeInput("descriptionLocation", value)
-                }
+                onChangeText={value => handleChangeInput('descriptionLocation', value)}
               />
-              <MapPinIcon style={{ position: "absolute" }} />
+              <MapPinIcon style={{ position: 'absolute' }} />
             </View>
           </View>
           {!isKeyboard && (
             <>
-              <MainButton
-                title="Опубліковати"
-                onSubmitForm={onSubmitForm}
-                isActive={isActiveBtn}
-              />
+              <MainButton title="Опубліковати" onSubmitForm={onSubmitForm} isActive={isActiveBtn} />
             </>
           )}
         </View>
       </ScrollView>
       {!isKeyboard && (
         <TouchableOpacity
-          style={{ position: "absolute", bottom: 16, alignSelf: "center" }}
+          style={{ position: 'absolute', bottom: 16, alignSelf: 'center' }}
           onPress={() => setValue(initialValue)}
           disabled={!isActiveBtn}
         >
